@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chatbot SOPK</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <style>
+        .chat-container {
+            max-width: 700px;
+            margin: 2rem auto;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 12px;
+            background-color: #f9f9f9;
+        }
+        .message {
+            margin: 0.5rem 0;
+        }
+        .user {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .bot {
+            font-style: italic;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">Dashboard</a></li>
+            <li><a href="/formulaire/">Formulaire</a></li>
+            <li><a href="/chatbot/">Chatbot</a></li>
+            <li><a href="/about_us/">À propos</a></li>
+        </ul>
+    </nav>
+
+    <header>🤖 Chatbot SOPK</header>
+
+    <div class="chat-container">
+        <div id="chatBox" style="max-height: 300px; overflow-y: auto;">
+            {% if response_text %}
+                <div class="message bot">🤖 Bot : {{ response_text }}</div>
+            {% endif %}
+        </div>
+        <form id="chat-form" method="POST">
+            {% csrf_token %}
+            <input type="text" id="user-message" placeholder="Écris ton message ici...">
+            <button type="submit">Envoyer</button>
+        </form>
+    </div>
+
+    <script>
+        const chatForm = document.getElementById("chat-form");
+        const chatBox = document.getElementById("chatBox");
+
+        chatForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const message = document.getElementById("user-message").value;
+            const userMessageElement = document.createElement("div");
+            userMessageElement.textContent = "Tu: " + message;
+            chatBox.appendChild(userMessageElement);
+
+            // Récupère le token CSRF
+            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+            fetch("{% url 'chatbot' %}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "X-CSRFToken": csrfToken,  // Envoie le token CSRF
+                },
+                body: "message=" + message,
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                const botMessageElement = document.createElement("div");
+                botMessageElement.textContent = "Bot: " + data.response;
+                chatBox.appendChild(botMessageElement);
+            });
+        });
+    </script>
+</body>
+</html>

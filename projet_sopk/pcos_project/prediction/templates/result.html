@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Résultat SOPK</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <header>🌸 Résultat de votre prédiction</header>
+    <div class="container">
+        <div class="result">{{ result }}</div>
+        <br>
+        <a href="/"><button>↩ Retour au formulaire</button></a>
+    </div>
+</body>
+</html>

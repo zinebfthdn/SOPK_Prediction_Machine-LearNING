@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard SOPK</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <style>
+        /* On définit la taille max du graphique dans le CSS */
+        #riskChart {
+            max-width: 500px;  /* Limite la largeur du graphique */
+            max-height: 400px; /* Limite la hauteur du graphique */
+            width: 100%;  /* Assure que le graphique occupe tout l'espace disponible sans dépasser */
+            height: auto;  /* Garde la proportionnalité en hauteur */
+            margin: 0 auto; /* Centre le graphique */
+        }
+    </style>
+</head>
+<body>
+    <header>🌸 Dashboard Prédiction SOPK 🌸</header>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">Dashboard</a></li>
+            <li><a href="/formulaire/">Formulaire</a></li>
+            <li><a href="/chatbot/">Chatbot</a></li>
+            <li><a href="/about_us/">À propos</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="section">
+            <h2>👋 Bonjour, nous espérons que vous allez bien !</h2>
+            <p>Il est toujours bon de vérifier sa santé et nous sommes fiers de vous voir prendre cette étape pour prendre soin de vous. 💖</p>
+            <p>Votre bien-être est important. Continuez à surveiller vos symptômes et à rester informé(e). 😊</p>
+        </div>
+
+        <div class="section">
+            <h2>📊 Analyse des données</h2>
+            <canvas id="riskChart"></canvas>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var ctx = document.getElementById('riskChart').getContext('2d');
+        
+        var riskChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Risque SOPK', 'Pas de Risque SOPK'],
+                datasets: [{
+                    label: 'Risque SOPK',
+                    data: [80, 20], // Remplacer avec des données dynamiques si nécessaire
+                    backgroundColor: ['#ff6961', '#77dd77'],
+                    borderColor: ['#fff', '#fff'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw + '%';
+                            }
+                        }
+                    }
+                },
+            }
+        });
+    </script>
+</body>
+</html>

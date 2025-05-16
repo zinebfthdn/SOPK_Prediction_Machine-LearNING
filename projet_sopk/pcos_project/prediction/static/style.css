@@ -1,0 +1,158 @@
+/* Global Styles */
+body { 
+    background-color: #f4f7fa;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+    background-color: #003366;  /* Bleu foncé */
+    color: white;
+    padding: 25px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    border-radius: 0 0 10px 10px;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #00509e;  /* Bleu professionnel */
+    padding: 15px 0;
+    text-align: center;
+    font-size: 18px;
+    border-bottom: 2px solid #003366;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+}
+
+.navbar ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.navbar ul li a:hover {
+    color: #ff6f61;  /* Accent de couleur professionnelle */
+    text-decoration: underline;
+}
+
+/* Main Container */
+.container {
+    max-width: 1100px;
+    margin: 50px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Styles */
+button {
+    background-color: #003366; /* Bleu foncé */
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #00509e;  /* Bleu plus clair */
+}
+
+/* Form Inputs */
+form input, form select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+form input:focus, form select:focus {
+    outline: none;
+    border-color: #003366;
+}
+
+/* Result Section */
+.result {
+    font-size: 18px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Chatbot Section */
+#chat-box {
+    background-color: #f9f9f9;
+    border: 2px solid #ddd;
+    padding: 20px;
+    height: 400px;
+    overflow-y: scroll;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.message {
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    max-width: 75%;
+}
+
+.bot-message {
+    background-color: #003366;
+    color: white;
+    text-align: left;
+}
+
+.user-message {
+    background-color: #77b3d4;
+    color: white;
+    text-align: right;
+}
+
+/* Input Message */
+input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+}
+
+/* Adjust Navbar for Smaller Screens */
+@media screen and (max-width: 768px) {
+    .navbar ul li {
+        display: block;
+        margin-bottom: 10px;
+    }
+    
+    .navbar ul li a {
+        font-size: 16px;
+    }
+    
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+}

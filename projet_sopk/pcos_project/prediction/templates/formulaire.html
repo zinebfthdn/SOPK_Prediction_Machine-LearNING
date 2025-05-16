@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire de Prédiction SOPK</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">Dashboard</a></li>
+            <li><a href="/formulaire/">Formulaire</a></li>
+            <li><a href="/chatbot/">Chatbot</a></li>
+            <li><a href="/about_us/">À propos</a></li>
+        </ul>
+    </nav>
+
+    <header>🌸 Formulaire de Prédiction SOPK 🌸</header>
+
+    <div class="container">
+        <h2>📋 Remplissez le formulaire pour obtenir une prédiction</h2>
+        <form method="post" action="/predict/">
+            {% csrf_token %}
+            Âge : <input type="number" name="age" required>
+            Poids (kg) : <input type="number" name="weight" required>
+            Taille (cm) : <input type="number" name="height" required>
+            Délai entre règles (mois) : <input type="number" name="period_gap" required>
+            Durée des règles (jours) : <input type="number" name="period_duration" required>
+
+            Avez-vous pris du poids récemment ? 
+            <select name="weight_gain">
+                <option value="1">Oui</option>
+                <option value="0">Non</option>
+            </select>
+
+            Avez-vous des poils en excès ? 
+            <select name="hair_growth">
+                <option value="1">Oui</option>
+                <option value="0">Non</option>
+            </select>
+
+            Avez-vous un noircissement de la peau ?
+            <select name="skin_darkening">
+                <option value="1">Oui</option>
+                <option value="0">Non</option>
+            </select>
+
+            Perte de cheveux ?
+            <select name="hair_loss">
+                <option value="1">Oui</option>
+                <option value="0">Non</option>
+            </select>
+
+            Acné / boutons ?
+            <select name="pimples">
+                <option value="1">Oui</option>
+                <option value="0">Non</option>
+            </select>
+
+            Fast food souvent ?
+            <select name="fast_food">
+                <option value="1">Oui</option>
+                <option value="0">Non</option>
+            </select>
+
+            Exercice régulier ?
+            <select name="exercise">
+                <option value="1">Oui</option>
+                <option value="0">Non</option>
+            </select>
+
+            Sauts d’humeur ?
+            <select name="mood_swings">
+                <option value="1">Oui</option>
+                <option value="0">Non</option>
+            </select>
+
+            Règles régulières ?
+            <select name="regular_periods">
+                <option value="1">Oui</option>
+                <option value="0">Non</option>
+            </select>
+
+            <button type="submit">Prédire 🩺</button>
+        </form>
+    </div>
+</body>
+</html>

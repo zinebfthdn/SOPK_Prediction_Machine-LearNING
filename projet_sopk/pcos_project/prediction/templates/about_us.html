@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À propos du SOPK</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">Dashboard</a></li>
+            <li><a href="/formulaire/">Formulaire</a></li>
+            <li><a href="/chatbot/">Chatbot</a></li>
+            <li><a href="/about_us/" class="active">À propos</a></li>
+        </ul>
+    </nav>
+
+    <header>🌸 À propos du SOPK 🌸</header>
+
+    <div class="container">
+        <h1>📊 À propos du SOPK</h1>
+        <p>Salut 🌸, j'espère que tu vas bien. C'est important de prendre soin de toi. Ce tableau de bord te permet de comprendre et de prédire les risques liés au SOPK (Syndrome des Ovaires Polykystiques). Nous utilisons des données médicales pour t'aider à surveiller ta santé menstruelle et hormonale.</p>
+    
+        <h2>📈 Répartition estimée du SOPK</h2>
+        <img src="{% url 'generate_sopk_graph' %}" alt="Graphique SOPK" style="max-width: 100%; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+        <p style="margin-top: 20px;">Environ <strong>1 femme sur 5</strong> en âge de procréer est atteinte du SOPK, ce qui représente près de 20% de la population féminine. Ce graphique illustre la part estimée de femmes diagnostiquées et non diagnostiquées. Il est donc crucial de se faire dépister si tu observes des symptômes persistants.</p>
+    
+        <p style="margin-top: 30px;">Nous sommes fiers de t'aider dans cette démarche 💪.</p>
+    </div>
+
+    <script>
+        // Add event listener to navbar links
+        const navbarLinks = document.querySelectorAll('.navbar a');
+        navbarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                // Add active class to current link
+                navbarLinks.forEach(link => link.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
